@@ -14,7 +14,10 @@ public class Puesto {
     private final int [][] puestos;
     private final int filas;
     private final int columnas;
-    private final Vehiculo vehiculo;
+    private Vehiculo vehiculo;
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
     private boolean estado;
 
     public Puesto (int filas, int columnas, Vehiculo vehiculo, boolean estado) {

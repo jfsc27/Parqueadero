@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
 * Clase Registro
@@ -12,42 +12,55 @@ public class Registro {
      * Atributos.
      *
      */
-    private final double horaEntrada;
-    private final double horaSalida;
-    private final LocalDate fecha;
+    private final LocalDateTime entrada;
+    private final LocalDateTime salida;
     private final Vehiculo vehiculo;
-    private final PosicionPuesto puesto;
+    private final Puesto puesto;
 
     /**
      * Constructor.
      *
      */
-    public Registro(double horaEntrada, double horaSalida, LocalDate fecha, Vehiculo vehiculo, PosicionPuesto puesto) {
-        this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
-        this.fecha = fecha;
+    public Registro(LocalDateTime entrada, LocalDateTime salida, Vehiculo vehiculo, Puesto puesto) {
+        
+        this.entrada = entrada;
+        this.salida = salida;
         this.vehiculo = vehiculo;
         this.puesto = puesto;
+
     }
+
 
     /**
      * Getters.
      *
      */
-    public double getHoraEntrada() {
-        return horaEntrada;
+    
+     public LocalDateTime getEntrada() {
+        return entrada;
     }
-    public double getHoraSalida() {
-        return horaSalida;
+
+    public LocalDateTime getSalida() {
+        return salida;
     }
-    public LocalDate getFecha() {
-        return fecha;
-    }
+
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
-    public PosicionPuesto getPuesto() {
+
+    public Puesto getPuesto() {
         return puesto;
     }
 
+    private int valorParqueo(){
+        int horaEntrada = getEntrada().getHour();
+        int minutoEntrada = getEntrada().getMinute() / 60;
+        int tiempoEntrada = horaEntrada + minutoEntrada;
+        int horaSalida = getSalida().getHour();
+        int minutoSalida = getSalida().getMinute();
+        int tiempoSalida = horaSalida + minutoSalida;
+        int tiempoTotal = tiempoSalida-tiempoEntrada;
+        int tarifaTotal = (int) (tiempoTotal * vehiculo.getTarifa());
+        return tarifaTotal;
+    }
 }

@@ -10,20 +10,20 @@ public abstract class Vehiculo {
      * Atributos.
      *
      */
+    private double tarifa;
     private final String placa;
     private final String modelo;
     private Propietario propietario;
-    private final Tarifa tarifa;
 
     /**
      * Constructor.
      *
      */
-    public Vehiculo(String placa, String modelo, Propietario propietario, Tarifa tarifa) {
+    public Vehiculo(String placa, String modelo, Propietario propietario, double tarifa) {
         this.placa = placa;
+        this.tarifa = tarifa;
         this.modelo = modelo;
         this.propietario = propietario;
-        this.tarifa = tarifa;
     }
 
     /**
@@ -46,8 +46,12 @@ public abstract class Vehiculo {
         this.propietario = propietario;
     }
 
-    public Tarifa getTarifa() {
+    public double getTarifa() {
         return tarifa;
+    }
+
+    public void setTarifa(double tarifa) {
+        this.tarifa = tarifa;
     }
 
     

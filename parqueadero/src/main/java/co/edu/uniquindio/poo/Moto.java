@@ -20,7 +20,7 @@ public class Moto extends Vehiculo{
      *
      */
 
-    public Moto(String placa, String modelo, Propietario propietario, Tarifa tarifa, double velocidadMaxima, TipoMoto tipoMoto) {
+    public Moto(String placa, String modelo, Propietario propietario, double tarifa, double velocidadMaxima, TipoMoto tipoMoto) {
         super(placa, modelo, propietario, tarifa);
         this.tipoMoto = tipoMoto;
         this.velocidadMaxima = velocidadMaxima;
