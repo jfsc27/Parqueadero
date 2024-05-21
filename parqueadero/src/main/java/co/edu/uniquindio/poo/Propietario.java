@@ -1,31 +1,19 @@
 package co.edu.uniquindio.poo;
 
-/**
-* Clase propietario
-*
-*/
 public class Propietario {
+    private String nombre;
+    private String documentoIdentidad;
 
-    /**
-     * Atributos.
-     *
-     */
-    private final String id;
-
-    /**
-     * Constructor.
-     *
-     */
-    public Propietario(String id) {
-        this.id = id;
+    public Propietario(String nombre, String documentoIdentidad) {
+        this.nombre = nombre;
+        this.documentoIdentidad = documentoIdentidad;
     }
 
-    /**
-     * Getters.
-     *
-     */
-    public String getId() {
-        return id;
+    public String getNombre() {
+        return nombre;
     }
-    
+
+    public String getDocumentoIdentidad() {
+        return documentoIdentidad;
+    }
 }

@@ -1,43 +1,36 @@
 package co.edu.uniquindio.poo;
 
-/**
-* Clase moto que hereda de vehiculo
-*
-*/
 
-public class Moto extends Vehiculo{
+public class Moto extends Vehiculo {
+    private TipoMoto tipoMoto;
+    private double velocidadMaxima;
+    private static double tarifaClasica;
+    private static double tarifaHibrida;
 
-    /**
-     * Atributos.
-     *
-     */
-
-    private final double velocidadMaxima;
-    private final TipoMoto tipoMoto;
-
-    /**
-     * Constructor.
-     *
-     */
-
-    public Moto(String placa, String modelo, Propietario propietario, double tarifa, double velocidadMaxima, TipoMoto tipoMoto) {
-        super(placa, modelo, propietario, tarifa);
+    public Moto(String placa, String modelo, Propietario propietario, TipoMoto tipoMoto, double velocidadMaxima) {
+        super(placa, modelo, propietario);
         this.tipoMoto = tipoMoto;
         this.velocidadMaxima = velocidadMaxima;
-    }
-
-    /**
-     * Getters
-     *
-     */
-    
-    public double getVelocidadMaxima() {
-        return velocidadMaxima;
     }
 
     public TipoMoto getTipoMoto() {
         return tipoMoto;
     }
 
-    
+    public double getVelocidadMaxima() {
+        return velocidadMaxima;
+    }
+
+    public static void setTarifaClasica(double tarifa) {
+        tarifaClasica = tarifa;
+    }
+
+    public static void setTarifaHibrida(double tarifa) {
+        tarifaHibrida = tarifa;
+    }
+
+    @Override
+    public double getTarifaPorHora() {
+        return tipoMoto == TipoMoto.CLASICA ? tarifaClasica : tarifaHibrida;
+    }
 }

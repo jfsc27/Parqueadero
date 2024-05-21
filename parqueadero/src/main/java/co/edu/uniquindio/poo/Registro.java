@@ -2,46 +2,16 @@ package co.edu.uniquindio.poo;
 
 import java.time.LocalDateTime;
 
-/**
-* Clase Registro
-*
-*/
 public class Registro {
+    private Vehiculo vehiculo;
+    private Puesto puesto;
+    private LocalDateTime horaIngreso;
+    private LocalDateTime horaSalida;
 
-    /**
-     * Atributos.
-     *
-     */
-    private final LocalDateTime entrada;
-    private final LocalDateTime salida;
-    private final Vehiculo vehiculo;
-    private final Puesto puesto;
-
-    /**
-     * Constructor.
-     *
-     */
-    public Registro(LocalDateTime entrada, LocalDateTime salida, Vehiculo vehiculo, Puesto puesto) {
-        
-        this.entrada = entrada;
-        this.salida = salida;
+    public Registro(Vehiculo vehiculo, Puesto puesto) {
         this.vehiculo = vehiculo;
         this.puesto = puesto;
-
-    }
-
-
-    /**
-     * Getters.
-     *
-     */
-    
-     public LocalDateTime getEntrada() {
-        return entrada;
-    }
-
-    public LocalDateTime getSalida() {
-        return salida;
+        this.horaIngreso = LocalDateTime.now();
     }
 
     public Vehiculo getVehiculo() {
@@ -52,15 +22,23 @@ public class Registro {
         return puesto;
     }
 
-    private int valorParqueo(){
-        int horaEntrada = getEntrada().getHour();
-        int minutoEntrada = getEntrada().getMinute() / 60;
-        int tiempoEntrada = horaEntrada + minutoEntrada;
-        int horaSalida = getSalida().getHour();
-        int minutoSalida = getSalida().getMinute();
-        int tiempoSalida = horaSalida + minutoSalida;
-        int tiempoTotal = tiempoSalida-tiempoEntrada;
-        int tarifaTotal = (int) (tiempoTotal * vehiculo.getTarifa());
-        return tarifaTotal;
+    public LocalDateTime getHoraIngreso() {
+        return horaIngreso;
+    }
+
+    public LocalDateTime getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(LocalDateTime horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+
+    public double calcularCosto() {
+        if (horaSalida != null) {
+            long horas = java.time.Duration.between(horaIngreso, horaSalida).toHours();
+            return horas * vehiculo.getTarifaPorHora();
+        }
+        return 0;
     }
 }

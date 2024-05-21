@@ -1,58 +1,57 @@
 package co.edu.uniquindio.poo;
 
 /**
-* Clase Vehiculo.
-*
-*/
+ * Clase abstracta que representa un vehículo.
+ */
 public abstract class Vehiculo {
+    protected String placa;
+    protected String modelo;
+    protected Propietario propietario;
 
     /**
-     * Atributos.
+     * Constructor de la clase Vehiculo.
      *
+     * @param placa      La placa del vehículo.
+     * @param modelo     El modelo del vehículo.
+     * @param propietario El propietario del vehículo.
      */
-    private double tarifa;
-    private final String placa;
-    private final String modelo;
-    private Propietario propietario;
-
-    /**
-     * Constructor.
-     *
-     */
-    public Vehiculo(String placa, String modelo, Propietario propietario, double tarifa) {
+    public Vehiculo(String placa, String modelo, Propietario propietario) {
         this.placa = placa;
-        this.tarifa = tarifa;
         this.modelo = modelo;
         this.propietario = propietario;
     }
 
     /**
-     * Getters
+     * Obtiene la placa del vehículo.
      *
+     * @return La placa del vehículo.
      */
     public String getPlaca() {
         return placa;
     }
 
+    /**
+     * Obtiene el modelo del vehículo.
+     *
+     * @return El modelo del vehículo.
+     */
     public String getModelo() {
         return modelo;
     }
 
+    /**
+     * Obtiene el propietario del vehículo.
+     *
+     * @return El propietario del vehículo.
+     */
     public Propietario getPropietario() {
         return propietario;
     }
 
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
-    }
-
-    public double getTarifa() {
-        return tarifa;
-    }
-
-    public void setTarifa(double tarifa) {
-        this.tarifa = tarifa;
-    }
-
-    
+    /**
+     * Obtiene la tarifa por hora del vehículo.
+     *
+     * @return La tarifa por hora.
+     */
+    public abstract double getTarifaPorHora();
 }
