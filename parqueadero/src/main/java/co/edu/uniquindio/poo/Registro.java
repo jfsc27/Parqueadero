@@ -85,11 +85,12 @@ public class Registro {
      */
     
      public double calcularCosto() {
-        if (horaSalida != null) {
-            long horas = java.time.Duration.between(horaIngreso, horaSalida).toHours();
-            return horas * vehiculo.getTarifaPorHoraVehiculo();
-        }else
-        return 0;
+        double costo = 0.0;
+        if (horaSalida != null){
+            long horas = java.time.Duration.between(horaIngreso, horaSalida).toSeconds();
+            costo = horas * vehiculo.getTarifaPorHoraVehiculo();
+        }
+        return costo;
     }
 }
 

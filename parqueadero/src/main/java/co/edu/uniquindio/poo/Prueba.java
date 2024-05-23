@@ -1,35 +1,36 @@
 package co.edu.uniquindio.poo;
 
+import javax.swing.JOptionPane;
+
 public class Prueba {
     public static void main(String[] args) {
-        // Crear un parqueadero con 5x5 puestos
         Parqueadero parqueadero = new Parqueadero(5);
 
-        // Configurar tarifas por hora para carros y motos
-        parqueadero.configurarTarifasPorHora(10.0, 5.0, 7.0);
+        Vehiculo carro = new Carro("ABC123", "Mazda", new Propietario("Juan", "1928192"));
 
-        // Crear algunos vehículos
-        Propietario propietario1 = new Propietario("John Doe", "1234567890");
-        Carro carro1 = new Carro("ABC123", "Toyota", propietario1);
+        Vehiculo moto = new Moto("ACD343", "Yamaha", new Propietario("Juana", "178162"), TipoMoto.CLASICA, 150);
+        Vehiculo moto2 = new Moto("ACD343", "Yamaha", new Propietario("Juana", "178162"), TipoMoto.CLASICA, 150);
 
-        Propietario propietario2 = new Propietario("Jane Doe", "0987654321");
-        Moto moto1 = new Moto("XYZ987", "Honda", propietario2, TipoMoto.CLASICA, 100.0);
+        parqueadero.configurarTarifasPorHora(300, 150, 200);
 
-        // Ubicar vehículos en puestos específicos
-        parqueadero.ubicarVehiculo(0, 0, carro1);
-        parqueadero.ubicarVehiculo(1, 1, moto1);
+        parqueadero.ubicarVehiculo(0, 0, carro);
 
-        // Identificar propietario de un vehículo en un puesto dado
-        Propietario propietarioEnPuesto11 = parqueadero.identificarPropietario(1, 1);
-        System.out.println("Propietario del vehículo en el puesto (1, 1): " + propietarioEnPuesto11.getNombre());
+        parqueadero.ubicarVehiculo(1, 1, moto);
+        parqueadero.ubicarVehiculo(2, 2, moto2);
 
-        // Liberar puestos de vehículos
+        JOptionPane.showMessageDialog(null, "Por favor esperar");
+
         parqueadero.liberarPuesto(0, 0);
-        parqueadero.liberarPuesto(1, 1);
 
-        // Generar reportes diario y mensual
+        parqueadero.liberarPuesto(1, 1);
+        parqueadero.liberarPuesto(2, 2);
+
         parqueadero.generarReporteDiario();
         parqueadero.generarReporteMensual();
+
+        
+
+
     }
 }
 
