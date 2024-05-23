@@ -1,9 +1,5 @@
 package co.edu.uniquindio.poo;
 
-/**
- * La clase Propietario representa a una persona propietaria de un vehículo.
- * Contiene información básica del propietario como su nombre y documento de identidad.
- */
 public class Propietario {
     // Nombre del propietario.
     private final String nombre;
@@ -15,8 +11,15 @@ public class Propietario {
      *
      * @param nombre Nombre del propietario.
      * @param documentoIdentidad Documento de identidad del propietario.
+     * @throws IllegalArgumentException Si el nombre o el documento de identidad son nulos o vacíos.
      */
     public Propietario(String nombre, String documentoIdentidad) {
+        if (nombre == null || nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre del propietario no puede ser nulo o vacío.");
+        }
+        if (documentoIdentidad == null || documentoIdentidad.isEmpty()) {
+            throw new IllegalArgumentException("El documento de identidad del propietario no puede ser nulo o vacío.");
+        }
         this.nombre = nombre;
         this.documentoIdentidad = documentoIdentidad;
     }
@@ -39,4 +42,5 @@ public class Propietario {
         return documentoIdentidad;
     }
 }
+
 

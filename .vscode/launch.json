@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Prueba",
+            "request": "launch",
+            "mainClass": "co.edu.uniquindio.poo.Prueba",
+            "projectName": "parqueadero"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",

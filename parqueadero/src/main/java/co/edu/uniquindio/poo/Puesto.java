@@ -19,6 +19,9 @@ public class Puesto {
      * @param j Coordenada j (columna) del puesto.
      */
     public Puesto(int i, int j) {
+        assert i >= 0 : "La coordenada i debe ser mayor o igual a cero";
+        assert j >= 0 : "La coordenada j debe ser mayor o igual a cero";
+        
         this.i = i;
         this.j = j;
         this.vehiculo = null;
@@ -76,4 +79,3 @@ public class Puesto {
         return vehiculo;
     }
 }
-

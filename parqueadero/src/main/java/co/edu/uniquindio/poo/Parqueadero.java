@@ -26,6 +26,7 @@ public class Parqueadero {
      * @param n Número de filas y columnas del parqueadero.
      */
     public Parqueadero(int n) {
+        assert n > 0 : "El número de filas y columnas debe ser mayor que cero.";
         this.n = n;
         this.puestos = new Puesto[n][n];
         this.registros = new ArrayList<>();
@@ -54,6 +55,7 @@ public class Parqueadero {
      * @param n El número de filas y columnas a establecer.
      */
     public void setN(int n) {
+        assert n > 0 : "El número de filas y columnas debe ser mayor que cero.";
         this.n = n;
     }
 
@@ -72,6 +74,7 @@ public class Parqueadero {
      * @param puestos La matriz de puestos a establecer.
      */
     public void setPuestos(Puesto[][] puestos) {
+        assert puestos != null : "La matriz de puestos no puede ser nula.";
         this.puestos = puestos;
     }
 
@@ -90,6 +93,7 @@ public class Parqueadero {
      * @param registros La lista de registros a establecer.
      */
     public void setRegistros(List<Registro> registros) {
+        assert registros != null : "La lista de registros no puede ser nula.";
         this.registros = registros;
     }
 
@@ -137,6 +141,8 @@ public class Parqueadero {
      * @return true si el puesto está disponible, false en caso contrario.
      */
     public boolean verificarDisponibilidad(int i, int j) {
+        assert i >= 0 && i < n : "La fila está fuera de los límites.";
+        assert j >= 0 && j < n : "La columna está fuera de los límites.";
         return !puestos[i][j].estaOcupado();
     }
 
@@ -148,6 +154,8 @@ public class Parqueadero {
      * @param vehiculo  Vehículo a ubicar.
      */
     public void ubicarVehiculo(int i, int j, Vehiculo vehiculo) {
+        assert i >= 0 && i < n : "La fila está fuera de los límites.";
+        assert j >= 0 && j < n : "La columna está fuera de los límites.";
         if (verificarDisponibilidad(i, j)) {
             puestos[i][j].ocuparPuesto(vehiculo);
             registros.add(new Registro(vehiculo, puestos[i][j]));
@@ -164,6 +172,8 @@ public class Parqueadero {
      * @return El propietario del vehículo, o null si el puesto está vacío.
      */
     public Propietario identificarPropietario(int i, int j) {
+        assert i >= 0 && i < n : "La fila está fuera de los límites.";
+        assert j >= 0 && j < n : "La columna está fuera de los límites.";
         if (puestos[i][j].estaOcupado()) {
             return puestos[i][j].getVehiculo().getPropietario();
         }
@@ -177,6 +187,8 @@ public class Parqueadero {
      * @param j Columna del puesto.
      */
     public void liberarPuesto(int i, int j) {
+        assert i >= 0 && i < n : "La fila está fuera de los límites.";
+        assert j >= 0 && j < n : "La columna está fuera de los límites.";
         if (puestos[i][j].estaOcupado()) {
             Registro registro = obtenerRegistro(puestos[i][j].getVehiculo());
             if (registro != null) {
@@ -211,6 +223,9 @@ public class Parqueadero {
      * @param tarifaMotoHibrida Tarifa por hora para motos híbridas.
      */
     public void configurarTarifasPorHora(double tarifaCarro, double tarifaMotoClasica, double tarifaMotoHibrida) {
+        assert tarifaCarro > 0 : "La tarifa para carros debe ser mayor que cero.";
+        assert tarifaMotoClasica > 0 : "La tarifa para motos clásicas debe ser mayor que cero.";
+        assert tarifaMotoHibrida > 0 : "La tarifa para motos híbridas debe ser mayor que cero.";
         Carro.setTarifaPorHora(tarifaCarro);
         Moto.setTarifaClasica(tarifaMotoClasica);
         Moto.setTarifaHibrida(tarifaMotoHibrida);
@@ -222,8 +237,8 @@ public class Parqueadero {
      * @param tarifa Tarifa a añadir a las recaudaciones.
      */
     private void actualizarRecaudaciones(double tarifa) {
-        totalRecaudadoDiario += tarifa;
-        totalRecaudadoMensual += tarifa;
+        totalRecaudadoDiario += tarifa; // Incrementa el total recaudado diario
+        totalRecaudadoMensual += tarifa; // Incrementa el total recaudado mensual
     }
 
     /**
@@ -233,11 +248,11 @@ public class Parqueadero {
         System.out.println("Reporte Diario:");
         System.out.println("Total recaudado: " + totalRecaudadoDiario);
         System.out.println("Desglosado por tipo de vehículo:");
-
+    
         double totalCarros = 0;
         double totalMotosClasicas = 0;
         double totalMotosHibridas = 0;
-
+    
         for (Registro registro : registros) {
             if (registro.getHoraSalida() != null) {
                 if (registro.getVehiculo() instanceof Carro) {
@@ -252,11 +267,11 @@ public class Parqueadero {
                 }
             }
         }
-
+    
         System.out.println("Carros: " + totalCarros);
         System.out.println("Motos Clásicas: " + totalMotosClasicas);
         System.out.println("Motos Híbridas: " + totalMotosHibridas);
-
+    
         totalRecaudadoDiario = 0; // Reset diario
     }
 

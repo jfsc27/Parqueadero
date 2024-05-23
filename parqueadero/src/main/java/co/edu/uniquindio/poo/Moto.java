@@ -1,6 +1,5 @@
 package co.edu.uniquindio.poo;
 
-
 /**
  * La clase Moto representa un tipo de Vehiculo específico.
  * Esta clase hereda de la clase Vehiculo y añade propiedades y tarifas específicas para las motos.
@@ -26,6 +25,7 @@ public class Moto extends Vehiculo {
      */
     public Moto(String placa, String modelo, Propietario propietario, TipoMoto tipoMoto, double velocidadMaxima) {
         super(placa, modelo, propietario);
+        assert velocidadMaxima >= 0 : "La velocidad máxima no puede ser negativa";
         this.tipoMoto = tipoMoto;
         this.velocidadMaxima = velocidadMaxima;
     }
@@ -54,6 +54,7 @@ public class Moto extends Vehiculo {
      * @param tarifa La tarifa por hora a establecer para las motos clásicas.
      */
     public static void setTarifaClasica(double tarifa) {
+        assert tarifa >= 0 : "La tarifa para motos clásicas no puede ser negativa";
         tarifaClasica = tarifa;
     }
 
@@ -63,6 +64,7 @@ public class Moto extends Vehiculo {
      * @param tarifa La tarifa por hora a establecer para las motos híbridas.
      */
     public static void setTarifaHibrida(double tarifa) {
+        assert tarifa >= 0 : "La tarifa para motos híbridas no puede ser negativa";
         tarifaHibrida = tarifa;
     }
 

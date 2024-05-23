@@ -23,6 +23,9 @@ public class Registro {
      * @param puesto Puesto ocupado por el vehículo.
      */
     public Registro(Vehiculo vehiculo, Puesto puesto) {
+        assert vehiculo != null : "El vehículo no puede ser nulo";
+        assert puesto != null : "El puesto no puede ser nulo";
+
         this.vehiculo = vehiculo;
         this.puesto = puesto;
         this.horaIngreso = LocalDateTime.now();
@@ -70,6 +73,8 @@ public class Registro {
      * @param horaSalida La hora de salida a establecer.
      */
     public void setHoraSalida(LocalDateTime horaSalida) {
+        assert horaSalida != null : "La hora de salida no puede ser nula";
+
         this.horaSalida = horaSalida;
     }
 
@@ -78,12 +83,14 @@ public class Registro {
      *
      * @return El costo del estacionamiento, o 0 si el vehículo aún no ha salido.
      */
-    public double calcularCosto() {
+    
+     public double calcularCosto() {
         if (horaSalida != null) {
             long horas = java.time.Duration.between(horaIngreso, horaSalida).toHours();
             return horas * vehiculo.getTarifaPorHoraVehiculo();
-        }
+        }else
         return 0;
     }
 }
+
 

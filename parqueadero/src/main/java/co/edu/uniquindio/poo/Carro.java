@@ -25,8 +25,10 @@ public class Carro extends Vehiculo {
      * Establece la tarifa por hora para los carros.
      *
      * @param tarifa La tarifa por hora a establecer.
+     * @throws IllegalArgumentException si la tarifa es negativa.
      */
     public static void setTarifaPorHora(double tarifa) {
+        assert tarifa >= 0 : "La tarifa por hora no puede ser negativa";
         tarifaPorHora = tarifa;
     }
 
