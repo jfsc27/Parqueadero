@@ -40,6 +40,96 @@ public class Parqueadero {
     }
 
     /**
+     * Obtiene el número de filas y columnas del parqueadero.
+     *
+     * @return El número de filas y columnas.
+     */
+    public int getN() {
+        return n;
+    }
+
+    /**
+     * Establece el número de filas y columnas del parqueadero.
+     *
+     * @param n El número de filas y columnas a establecer.
+     */
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    /**
+     * Obtiene la matriz de puestos en el parqueadero.
+     *
+     * @return La matriz de puestos.
+     */
+    public Puesto[][] getPuestos() {
+        return puestos;
+    }
+
+    /**
+     * Establece la matriz de puestos en el parqueadero.
+     *
+     * @param puestos La matriz de puestos a establecer.
+     */
+    public void setPuestos(Puesto[][] puestos) {
+        this.puestos = puestos;
+    }
+
+    /**
+     * Obtiene la lista de registros de vehículos estacionados.
+     *
+     * @return La lista de registros.
+     */
+    public List<Registro> getRegistros() {
+        return registros;
+    }
+
+    /**
+     * Establece la lista de registros de vehículos estacionados.
+     *
+     * @param registros La lista de registros a establecer.
+     */
+    public void setRegistros(List<Registro> registros) {
+        this.registros = registros;
+    }
+
+    /**
+     * Obtiene el total recaudado en el día.
+     *
+     * @return El total recaudado en el día.
+     */
+    public double getTotalRecaudadoDiario() {
+        return totalRecaudadoDiario;
+    }
+
+    /**
+     * Establece el total recaudado en el día.
+     *
+     * @param totalRecaudadoDiario El total recaudado en el día a establecer.
+     */
+    public void setTotalRecaudadoDiario(double totalRecaudadoDiario) {
+        this.totalRecaudadoDiario = totalRecaudadoDiario;
+    }
+
+    /**
+     * Obtiene el total recaudado en el mes.
+     *
+     * @return El total recaudado en el mes.
+     */
+    public double getTotalRecaudadoMensual() {
+        return totalRecaudadoMensual;
+    }
+
+    /**
+     * Establece el total recaudado en el mes.
+     *
+     * @param totalRecaudadoMensual El total recaudado en el mes a establecer.
+     */
+    public void setTotalRecaudadoMensual(double totalRecaudadoMensual) {
+        this.totalRecaudadoMensual = totalRecaudadoMensual;
+    }
+
+    /**
      * Verifica si un puesto específico está disponible.
      *
      * @param i Fila del puesto.
@@ -53,9 +143,9 @@ public class Parqueadero {
     /**
      * Ubica un vehículo en un puesto específico si está disponible.
      *
-     * @param i Fila del puesto.
-     * @param j Columna del puesto.
-     * @param vehiculo Vehículo a ubicar.
+     * @param i         Fila del puesto.
+     * @param j         Columna del puesto.
+     * @param vehiculo  Vehículo a ubicar.
      */
     public void ubicarVehiculo(int i, int j, Vehiculo vehiculo) {
         if (verificarDisponibilidad(i, j)) {
@@ -116,7 +206,7 @@ public class Parqueadero {
     /**
      * Configura las tarifas por hora para carros y tipos de motos.
      *
-     * @param tarifaCarro Tarifa por hora para carros.
+     * @param tarifaCarro       Tarifa por hora para carros.
      * @param tarifaMotoClasica Tarifa por hora para motos clásicas.
      * @param tarifaMotoHibrida Tarifa por hora para motos híbridas.
      */

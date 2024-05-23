@@ -54,13 +54,7 @@ public abstract class Vehiculo {
         return propietario;
     }
 
-    /**
-     * Método abstracto para obtener la tarifa por hora del vehículo.
-     * Este método debe ser implementado por las clases que extiendan Vehiculo.
-     *
-     * @return La tarifa por hora del vehículo.
-     */
-    public abstract double getTarifaPorHora();
+    public abstract double getTarifaPorHoraVehiculo();
 }
 
  

@@ -72,7 +72,7 @@ public class Moto extends Vehiculo {
      * @return La tarifa por hora.
      */
     @Override
-    public double getTarifaPorHora() {
+    public double getTarifaPorHoraVehiculo() {
         return tipoMoto == TipoMoto.CLASICA ? tarifaClasica : tarifaHibrida;
     }
 }

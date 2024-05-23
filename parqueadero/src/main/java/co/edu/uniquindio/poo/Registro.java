@@ -81,7 +81,7 @@ public class Registro {
     public double calcularCosto() {
         if (horaSalida != null) {
             long horas = java.time.Duration.between(horaIngreso, horaSalida).toHours();
-            return horas * vehiculo.getTarifaPorHora();
+            return horas * vehiculo.getTarifaPorHoraVehiculo();
         }
         return 0;
     }
