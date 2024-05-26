@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "InterfazParqueadero",
+            "request": "launch",
+            "mainClass": "co.edu.uniquindio.poo.InterfazParqueadero",
+            "projectName": "parqueadero"
+        },
+        {
+            "type": "java",
+            "name": "ParqueaderoGUI",
+            "request": "launch",
+            "mainClass": "co.edu.uniquindio.poo.ParqueaderoGUI",
+            "projectName": "parqueadero"
+        },
+        {
+            "type": "java",
             "name": "Prueba",
             "request": "launch",
             "mainClass": "co.edu.uniquindio.poo.Prueba",
